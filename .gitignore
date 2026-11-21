@@ -1,0 +1,10 @@
+build/
+bin/
+*.o
+# large Nsight report files (the text summaries in results/profile/ are kept)
+*.nsys-rep
+*.ncu-rep
+*.sqlite
+__pycache__/
+output/
+error/

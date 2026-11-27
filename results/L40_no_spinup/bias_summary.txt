@@ -1,0 +1,11 @@
+scheme engine         K   mean z       t   sd z   mean err  verdict
+euler  cpu           32   -0.469   -2.65   1.03   -0.00154  ok
+euler  gpu-double    32   -0.112   -0.63   0.89   -0.00037  ok
+euler  gpu-pregen    32   -0.345   -1.95   0.99   -0.00113  ok
+euler  gpu-shuffle   32   -0.263   -1.49   1.04   -0.00086  ok
+euler  gpu-xorwow    32   -0.193   -1.09   1.04   -0.00063  ok
+log    cpu           32   -0.098   -0.55   1.03   -0.00032  ok
+log    gpu-double    32   +0.034   +0.19   0.89   +0.00011  ok
+log    gpu-pregen    32   +0.031   +0.17   0.99   +0.00010  ok
+log    gpu-shuffle   32   +0.113   +0.64   1.04   +0.00037  ok
+log    gpu-xorwow    32   +0.188   +1.07   1.04   +0.00062  ok

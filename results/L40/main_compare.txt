@@ -1,0 +1,31 @@
+Option   : european call  S0=100 K=100 r=0.05 sigma=0.2 T=1
+Paths    : 10000000  steps=252  scheme=euler  antithetic=on  seed=1234
+CPU      : OpenMP, 64 threads
+GPU      : NVIDIA L40 (cc 8.9, 142 SMs, 45435 MiB, CUDA runtime 11.3, driver 12.1)
+Launch   : <<<1136, 256>>>  (8 blocks/SM)
+Kernels  :
+  (block size 256; theoretical occupancy from cudaOccupancyMaxActiveBlocksPerMultiprocessor)
+  mc_shuffle_kernel   53 regs/thread    256 B smem     0 B local(spill)   4 blocks/SM  occupancy  67%
+  mc_shared_kernel    54 regs/thread   2048 B smem     0 B local(spill)   4 blocks/SM  occupancy  67%
+  mc_atomic_kernel    33 regs/thread      0 B smem     0 B local(spill)   6 blocks/SM  occupancy 100%
+  mc_xorwow_kernel    32 regs/thread    256 B smem     0 B local(spill)   6 blocks/SM  occupancy 100%
+  mc_double_kernel    64 regs/thread    512 B smem     0 B local(spill)   4 blocks/SM  occupancy  67%
+  mc_pregen_kernel    23 regs/thread    256 B smem     0 B local(spill)   6 blocks/SM  occupancy 100%
+  grid: 1136 blocks x 256 threads (142 SMs x 8 blocks/SM) for 5000000 samples
+Reference: 10.450584 (Black-Scholes)
+Note     : Euler on S has O(dt) bias; --scheme log is exact for GBM
+
+engine             price    std_err        err  err/se   total_ms  kernel_ms  Mpaths/s    vs cpu   vs cpu1
+----------------------------------------------------------------------------------------------------
+cpu1           10.447718  3.284e-03  -2.87e-03   -0.87   11890.41   11890.41       0.8      0.0x      1.0x
+cpu            10.445382  3.284e-03  -5.20e-03   -1.58     309.51     309.51      32.3      1.0x     38.4x
+gpu-hostrng    10.439805  3.283e-03  -1.08e-02   -3.28   15159.35       7.87       0.7      0.0x      0.8x
+gpu-pregen     10.439805  3.283e-03  -1.08e-02   -3.28      19.21      10.69     520.6     16.1x    619.0x
+gpu-atomic     10.449520  3.286e-03  -1.06e-03   -0.32      16.43      16.41     608.8     18.8x    723.9x
+gpu-shared     10.449520  3.286e-03  -1.06e-03   -0.32       2.44       2.43    4100.2    126.9x   4875.3x
+gpu-shuffle    10.449520  3.286e-03  -1.06e-03   -0.32       2.68       2.67    3725.4    115.3x   4429.6x
+gpu-xorwow     10.452078  3.283e-03  +1.49e-03   +0.46       2.87       2.85    3480.6    107.7x   4138.5x
+gpu-double     10.450485  3.285e-03  -9.88e-05   -0.03      87.35      87.32     114.5      3.5x    136.1x
+
+95% CI of the last engine: 10.450485 +/- 0.006439
+(median of 3 runs; total = RNG + simulation + reduction + copies, kernel = cudaEvent time)

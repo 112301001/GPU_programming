@@ -1,0 +1,11 @@
+engine,style,type,scheme,antithetic,paths,steps,block,blocks_per_sm,cpu_threads,price,std_error,reference,abs_error,time_ms,kernel_ms,mpaths_per_s,speedup_vs_cpu,speedup_vs_cpu1
+gpu-shuffle,asian,call,euler,1,10000000,1,256,8,0,10.20986815,2.44966951e-03,,,0.0631,0.0451,158558.035,,
+gpu-pregen,asian,call,euler,1,10000000,1,256,8,0,10.20437562,2.44835679e-03,,,0.0927,0.0164,107840.467,,
+gpu-shuffle,asian,call,euler,1,10000000,12,256,8,0,6.14873944,1.81455663e-03,,,0.1525,0.1352,65588.471,,
+gpu-pregen,asian,call,euler,1,10000000,12,256,8,0,6.14791286,1.81388443e-03,,,1.4693,0.4178,6805.780,,
+gpu-shuffle,asian,call,euler,1,10000000,52,256,8,0,5.85008919,1.76524836e-03,,,0.5456,0.5304,18327.967,,
+gpu-pregen,asian,call,euler,1,10000000,52,256,8,0,5.85104512,1.76438466e-03,,,3.8425,1.9876,2602.459,,
+gpu-shuffle,asian,call,euler,1,10000000,252,256,8,0,5.78195217,1.75427207e-03,,,2.5528,2.5385,3917.260,,
+gpu-pregen,asian,call,euler,1,10000000,252,256,8,0,5.77727341,1.75251885e-03,,,19.1289,10.6434,522.770,,
+gpu-shuffle,asian,call,euler,1,10000000,1000,256,8,0,5.76559142,1.75083490e-03,,,10.0489,10.0322,995.135,,
+gpu-pregen,asian,call,euler,1,10000000,1000,256,8,0,5.76249690,1.75059826e-03,,,76.6531,43.2029,130.458,,

@@ -1,0 +1,79 @@
+Generating SQLite file results/profile/nsys_mc.sqlite from results/profile/nsys_mc.nsys-rep
+Processing [results/profile/nsys_mc.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+
+ ** CUDA GPU Kernel Summary (cuda_gpu_kern_sum):
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)     Min (ns)   Max (ns)     StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  --------  -----------  -------------  ----------------------------------------------------------------------------------------------------
+     25.8      3,33,92,632          2  1,66,96,316.0  1,66,96,316.0  3,73,122  3,30,19,510  2,30,84,482.3  mc_double_kernel(unsigned long long, unsigned long long, double *)                                  
+     24.1      3,12,61,991          2  1,56,30,995.5  1,56,30,995.5  2,88,833  3,09,73,158  2,16,97,094.3  mc_atomic_kernel(unsigned long long, unsigned long long, double *)                                  
+     10.4      1,34,87,248          2    67,43,624.0    67,43,624.0  4,29,985  1,30,57,263    89,28,833.9  mc_xorwow_kernel(unsigned long long, unsigned long long, double *)                                  
+     10.4      1,34,72,019          2    67,36,009.5    67,36,009.5  1,34,753  1,33,37,266    93,35,586.5  mc_shared_kernel(unsigned long long, unsigned long long, double *)                                  
+     10.4      1,34,57,873          2    67,28,936.5    67,28,936.5  1,33,793  1,33,24,080    93,26,941.4  mc_shuffle_kernel(unsigned long long, unsigned long long, double *)                                 
+      9.5      1,22,71,219         20     6,13,561.0     6,44,178.0  2,07,585     6,48,227     1,03,683.6  mc_pregen_kernel(const float *, unsigned long long, double *)                                       
+      9.3      1,20,97,457         20     6,04,872.9     6,39,362.5    84,608     6,42,883     1,26,530.2  void gen_sequenced_Philox<curandStatePhilox4_32_10, float4, normal_args_st, &curand_normal_scaled4_…
+      0.0           54,720          2       27,360.0       27,360.0    27,168       27,552          271.5  generate_seed_pseudo(unsigned long long, unsigned long long, curandStatePhilox4_32_10 *)            
+
+Processing [results/profile/nsys_mc.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/cuda_gpu_mem_time_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Time) (cuda_gpu_mem_time_sum):
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)      Operation     
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ------------------
+     39.0           25,632     12   2,136.0   2,080.0     1,568     3,040        379.6  [CUDA memcpy HtoD]
+     37.9           24,927     12   2,077.3   1,840.0     1,600     2,560        381.1  [CUDA memcpy DtoH]
+     23.2           15,231     12   1,269.3   1,280.0     1,216     1,407         59.8  [CUDA memset]     
+
+Processing [results/profile/nsys_mc.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/nvtx_sum.py]... 
+
+ ** NVTX Range Summary (nvtx_sum):
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)     Max (ns)     StdDev (ns)    Style      Range   
+ --------  ---------------  ---------  -------------  -------------  -----------  -----------  -------------  -------  -----------
+     26.4      3,88,98,722          2  1,94,49,361.0  1,94,49,361.0  1,25,16,432  2,63,82,290    98,04,642.2  PushPop  gpu-pregen 
+     22.9      3,37,36,747          2  1,68,68,373.5  1,68,68,373.5     5,43,433  3,31,93,314  2,30,86,952.3  PushPop  gpu-double 
+     22.7      3,35,10,317          2  1,67,55,158.5  1,67,55,158.5    13,36,781  3,21,73,536  2,18,04,878.6  PushPop  gpu-atomic 
+      9.4      1,38,27,199          2    69,13,599.5    69,13,599.5     6,00,262  1,32,26,937    89,28,407.5  PushPop  gpu-xorwow 
+      9.4      1,38,18,065          2    69,09,032.5    69,09,032.5     2,99,901  1,35,18,164    93,46,723.4  PushPop  gpu-shared 
+      9.4      1,38,03,607          2    69,01,803.5    69,01,803.5     3,07,339  1,34,96,268    93,25,981.1  PushPop  gpu-shuffle
+
+Generating SQLite file results/profile/nsys_hostrng.sqlite from results/profile/nsys_hostrng.nsys-rep
+Processing [results/profile/nsys_hostrng.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+
+ ** CUDA GPU Kernel Summary (cuda_gpu_kern_sum):
+
+ Time (%)  Total Time (ns)  Instances   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  ----------------------------------------------------------------------------------------------------
+     38.5        28,74,126          5  5,74,825.2  6,45,859.0  2,21,409   6,81,859   1,98,403.5  mc_pregen_kernel(const float *, unsigned long long, double *)                                       
+     22.9        17,09,927          2  8,54,963.5  8,54,963.5  1,50,816  15,59,111   9,95,814.9  mc_shuffle_kernel(unsigned long long, unsigned long long, double *)                                 
+     19.4        14,48,166          3  4,82,722.0  6,33,026.0    94,209   7,20,931   3,39,320.8  void gen_sequenced_Philox<curandStatePhilox4_32_10, float4, normal_args_st, &curand_normal_scaled4_…
+      6.5         4,86,274          1  4,86,274.0  4,86,274.0  4,86,274   4,86,274          0.0  mc_xorwow_kernel(unsigned long long, unsigned long long, double *)                                  
+      5.6         4,20,962          1  4,20,962.0  4,20,962.0  4,20,962   4,20,962          0.0  mc_double_kernel(unsigned long long, unsigned long long, double *)                                  
+      4.2         3,16,033          1  3,16,033.0  3,16,033.0  3,16,033   3,16,033          0.0  mc_atomic_kernel(unsigned long long, unsigned long long, double *)                                  
+      2.0         1,51,873          1  1,51,873.0  1,51,873.0  1,51,873   1,51,873          0.0  mc_shared_kernel(unsigned long long, unsigned long long, double *)                                  
+      0.8           60,032          2    30,016.0    30,016.0    29,696     30,336        452.5  generate_seed_pseudo(unsigned long long, unsigned long long, curandStatePhilox4_32_10 *)            
+
+Processing [results/profile/nsys_hostrng.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/cuda_gpu_mem_time_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Time) (cuda_gpu_mem_time_sum):
+
+ Time (%)  Total Time (ns)  Count   Avg (ns)    Med (ns)  Min (ns)   Max (ns)    StdDev (ns)      Operation     
+ --------  ---------------  -----  -----------  --------  --------  -----------  -----------  ------------------
+     99.8      2,09,40,253     11  19,03,659.4   2,208.0     1,824  1,11,41,200  42,41,159.5  [CUDA memcpy HtoD]
+      0.1           23,584      9      2,620.4   2,720.0     1,856        4,352        776.9  [CUDA memcpy DtoH]
+      0.1           12,383      9      1,375.9   1,344.0     1,311        1,536         78.5  [CUDA memset]     
+
+Processing [results/profile/nsys_hostrng.sqlite] with [/opt/nvidia/nsight-systems/2023.1.2/host-linux-x64/reports/nvtx_sum.py]... 
+
+ ** NVTX Range Summary (nvtx_sum):
+
+ Time (%)  Total Time (ns)  Instances      Avg (ns)          Med (ns)         Min (ns)        Max (ns)     StdDev (ns)   Style      Range   
+ --------  ---------------  ---------  ----------------  ----------------  --------------  --------------  -----------  -------  -----------
+     99.0   2,26,23,50,450          1  2,26,23,50,450.0  2,26,23,50,450.0  2,26,23,50,450  2,26,23,50,450          0.0  PushPop  gpu-hostrng
+      0.8      1,76,78,560          2       88,39,280.0       88,39,280.0       52,58,376     1,24,20,184  50,64,163.0  PushPop  gpu-pregen 
+      0.1        31,53,886          2       15,76,943.0       15,76,943.0        3,34,367       28,19,519  17,57,267.8  PushPop  gpu-shuffle
+      0.1        13,73,490          1       13,73,490.0       13,73,490.0       13,73,490       13,73,490          0.0  PushPop  gpu-atomic 
+      0.0         6,66,138          1        6,66,138.0        6,66,138.0        6,66,138        6,66,138          0.0  PushPop  gpu-xorwow 
+      0.0         6,01,997          1        6,01,997.0        6,01,997.0        6,01,997        6,01,997          0.0  PushPop  gpu-double 
+      0.0         3,34,916          1        3,34,916.0        3,34,916.0        3,34,916        3,34,916          0.0  PushPop  gpu-shared 
+

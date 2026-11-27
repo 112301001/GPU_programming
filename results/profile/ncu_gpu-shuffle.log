@@ -1,0 +1,19 @@
+==PROF== Connected to process 1650707 (/home/s112301036-unnikrishnan/GPU_programming/bin/mc_pricer)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+==PROF== Disconnected from process 1650707
+Option   : european call  S0=100 K=100 r=0.05 sigma=0.2 T=1
+Paths    : 10000000  steps=252  scheme=euler  antithetic=on  seed=1234
+CPU      : OpenMP, 64 threads
+GPU      : NVIDIA A30 (cc 8.0, 56 SMs, 24099 MiB, CUDA runtime 11.3, driver 12.1)
+Launch   : <<<448, 256>>>  (8 blocks/SM)
+Reference: 10.450584 (Black-Scholes)
+Note     : Euler on S has O(dt) bias; --scheme log is exact for GBM
+
+engine             price    std_err        err  err/se   total_ms  kernel_ms  Mpaths/s    vs cpu   vs cpu1
+----------------------------------------------------------------------------------------------------
+gpu-shuffle    10.448228  3.286e-03  -2.36e-03   -0.72      11.65      11.59     858.1         -         -
+
+95% CI of the last engine: 10.448228 +/- 0.006440
+(median of 1 runs; total = RNG + simulation + reduction + copies, kernel = cudaEvent time)
+==WARNING== No kernels were profiled.
+==WARNING== Profiling kernels launched by child processes requires the --target-processes all option.

@@ -1,0 +1,59 @@
+
+== closed forms ==
+[ OK ] Black-Scholes call (textbook value): got 10.450584 want 10.450584 (tol 1.00e-09)
+[ OK ] Black-Scholes put (textbook value): got 5.573526 want 5.573526 (tol 1.00e-09)
+[ OK ] put-call parity: got 4.877058 want 4.877058 (tol 1.00e-09)
+[ OK ] geometric Asian with 1 fixing == BS: got 10.450584 want 10.450584 (tol 1.00e-09)
+[ OK ] geometric Asian call < European call
+[ OK ] geometric Asian -> continuous-monitoring limit: got 5.546866 want 5.546800 (tol 2.00e-03)
+
+== CPU Monte Carlo (OpenMP) ==
+[ OK ] cpu european call, log: price 10.449217 ref 10.450584 se 1.01e-02 (-0.13 se)
+[ OK ] cpu european put, log, no antithetic: price 5.582303 ref 5.573526 se 8.46e-03 (+1.04 se)
+[ OK ] cpu european call, euler: price 10.442271 ref 10.450584 se 1.01e-02 (-0.82 se)
+[ OK ] cpu geometric asian call, log: price 5.691949 ref 5.694114 se 5.36e-03 (-0.40 se)
+[ OK ] antithetic lowers std error at equal path count (1.013e-02 < 1.434e-02)
+[ OK ] antithetic run simulates the same number of paths
+[ OK ] cpu single thread european call: price 10.451305 ref 10.450584 se 2.03e-02 (+0.04 se)
+
+== GPU Monte Carlo ==
+device: NVIDIA L40 (cc 8.9, 142 SMs, 45435 MiB, CUDA runtime 11.3, driver 12.1)
+[ OK ] gpu-hostrng european call, log: price 10.457130 ref 10.450584 se 5.08e-03 (+1.29 se)
+[ OK ] gpu-hostrng european put, log, 17 steps (tail), no antithetic: price 5.571832 ref 5.573526 se 4.23e-03 (-0.40 se)
+[ OK ] gpu-hostrng geometric asian call, 50 steps: price 5.643280 ref 5.641058 se 2.66e-03 (+0.84 se)
+[ OK ] gpu-hostrng european call, euler, 252 steps: price 10.445467 ref 10.450584 se 5.07e-03 (-1.01 se)
+[ OK ] gpu-pregen european call, log: price 10.457130 ref 10.450584 se 5.08e-03 (+1.29 se)
+[ OK ] gpu-pregen european put, log, 17 steps (tail), no antithetic: price 5.571833 ref 5.573526 se 4.23e-03 (-0.40 se)
+[ OK ] gpu-pregen geometric asian call, 50 steps: price 5.643280 ref 5.641058 se 2.66e-03 (+0.84 se)
+[ OK ] gpu-pregen european call, euler, 252 steps: price 10.445467 ref 10.450584 se 5.07e-03 (-1.01 se)
+[ OK ] gpu-atomic european call, log: price 10.454407 ref 10.450584 se 5.08e-03 (+0.75 se)
+[ OK ] gpu-atomic european put, log, 17 steps (tail), no antithetic: price 5.572542 ref 5.573526 se 4.23e-03 (-0.23 se)
+[ OK ] gpu-atomic geometric asian call, 50 steps: price 5.643138 ref 5.641058 se 2.66e-03 (+0.78 se)
+[ OK ] gpu-atomic european call, euler, 252 steps: price 10.443071 ref 10.450584 se 5.07e-03 (-1.48 se)
+[ OK ] gpu-shared european call, log: price 10.454407 ref 10.450584 se 5.08e-03 (+0.75 se)
+[ OK ] gpu-shared european put, log, 17 steps (tail), no antithetic: price 5.572542 ref 5.573526 se 4.23e-03 (-0.23 se)
+[ OK ] gpu-shared geometric asian call, 50 steps: price 5.643138 ref 5.641058 se 2.66e-03 (+0.78 se)
+[ OK ] gpu-shared european call, euler, 252 steps: price 10.443071 ref 10.450584 se 5.07e-03 (-1.48 se)
+[ OK ] gpu-shuffle european call, log: price 10.454407 ref 10.450584 se 5.08e-03 (+0.75 se)
+[ OK ] gpu-shuffle european put, log, 17 steps (tail), no antithetic: price 5.572542 ref 5.573526 se 4.23e-03 (-0.23 se)
+[ OK ] gpu-shuffle geometric asian call, 50 steps: price 5.643138 ref 5.641058 se 2.66e-03 (+0.78 se)
+[ OK ] gpu-shuffle european call, euler, 252 steps: price 10.443071 ref 10.450584 se 5.07e-03 (-1.48 se)
+[ OK ] gpu-xorwow european call, log: price 10.448857 ref 10.450584 se 5.08e-03 (-0.34 se)
+[ OK ] gpu-xorwow european put, log, 17 steps (tail), no antithetic: price 5.571507 ref 5.573526 se 4.23e-03 (-0.48 se)
+[ OK ] gpu-xorwow geometric asian call, 50 steps: price 5.642837 ref 5.641058 se 2.66e-03 (+0.67 se)
+[ OK ] gpu-xorwow european call, euler, 252 steps: price 10.445385 ref 10.450584 se 5.07e-03 (-1.03 se)
+[ OK ] gpu-double european call, log: price 10.454295 ref 10.450584 se 5.08e-03 (+0.73 se)
+[ OK ] gpu-double european put, log, 17 steps (tail), no antithetic: price 5.574632 ref 5.573526 se 4.23e-03 (+0.26 se)
+[ OK ] gpu-double geometric asian call, 50 steps: price 5.649442 ref 5.641058 se 2.66e-03 (+3.15 se)
+[ OK ] gpu-double european call, euler, 252 steps: price 10.456847 ref 10.450584 se 5.07e-03 (+1.23 se)
+[ OK ] atomic == shuffle (same samples, float rounding only): got 5.838624 want 5.838624 (tol 5.84e-05)
+[ OK ] shared == shuffle (same samples, float rounding only): got 5.838624 want 5.838624 (tol 5.84e-05)
+[ OK ] double vs float agree statistically: got 5.839625 want 5.838624 (tol 1.54e-02)
+[ OK ] arithmetic asian: gpu-shuffle vs cpu: got 5.856356 want 5.852974 (tol 2.45e-02)
+[ OK ] arithmetic asian call > geometric asian call (AM-GM)
+[ OK ] odd path count rounds up to whole antithetic pairs
+[ OK ] tiny problem gives a finite price
+[ OK ] gpu-shuffle with 64-thread blocks, 3 blocks/SM: price 10.452398 ref 10.450584 se 5.08e-03 (+0.36 se)
+[ OK ] gpu-shared with 32-thread blocks: price 10.452779 ref 10.450584 se 5.08e-03 (+0.43 se)
+
+50/50 checks passed
